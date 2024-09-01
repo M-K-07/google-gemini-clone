@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Outfit", sans-serif;
+}
+body{
+  margin: 0;
+  padding: 0;
+}
+.greetings h1:nth-child(1) {
+  background: -webkit-linear-gradient(45deg, #4b90ff, #ff5546, #fff, #111);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+textarea::-webkit-scrollbar {
+  display: none;
+}
+.cards::-webkit-scrollbar {
+  display: none;
+}
+.display-res::-webkit-scrollbar {
+  display: none;
+}
+.greet-heading {
+  animation: fade 1s ease-in-out;
+}
+.greet-desc {
+  animation: fade 1s ease-in-out;
+}
+pre {
+  font-family: "Outfit", sans-serif;
+}
+
+.gemini-icon{
+  animation: rotate 3s infinite;
+}
+
+.chats::-webkit-scrollbar{
+  display: none;
+}
+
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes rotate {
+  from{
+    transform: rotate(0deg);
+  }
+  to{
+    transform: rotate(360deg);
+  }
+}
