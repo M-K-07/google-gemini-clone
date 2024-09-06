@@ -1,33 +1,75 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { AIContext } from "../context/Context";
 import gemini_icon from "../assets/gemini-icon.png";
+import rehypeDocument from 'rehype-document';
+import rehypeFormat from 'rehype-format';
+import rehypeStringify from 'rehype-stringify';
+import remarkParse from 'remark-parse';
+import remarkRehype from 'remark-rehype';
+import { unified } from 'unified';
+import rehypePrettyCode from "rehype-pretty-code";
+import { transformerCopyButton } from '@rehype-pretty/transformers'
+
 
 const Response = () => {
   const { displayInput, result, loading } = useContext(AIContext);
-  const pattern = /[*#'`]/g;
-  const geminiResponse = result.replace(pattern, "");
+  const [htmlContent, setHtmlContent] = useState("");
+
+  useEffect(() => {
+    const processMarkdown = async () => {
+      try {
+        const file = await unified()
+          .use(remarkParse)
+          .use(remarkRehype)
+          .use(rehypeDocument, { title: '👋🌍' })
+          .use(rehypeFormat)
+          .use(rehypeStringify)
+          .use(rehypePrettyCode, {
+            theme: "github-dark-default",
+            transformers: [
+                transformerCopyButton({
+                  visibility: 'always',
+                  feedbackDuration: 3000,
+                }),
+              ],
+    
+          })
+          .process(result);
+
+        setHtmlContent(file.toString());
+      } catch (error) {
+        console.error("Error processing Markdown:", error);
+        setHtmlContent("<p>Error processing content.</p>");
+      }
+    };
+
+    if (result) {
+      processMarkdown();
+    }
+  }, [result]);
 
   return (
     <div className="display-res lg:max-h-[80vh] max-h-[77vh] overflow-y-scroll">
       <div className="user-inp flex lg:mx-36 mx-4 lg:mt-16 mt-8 items-center gap-3 lg:gap-5">
         <FaUserCircle className="w-8 lg:w-10 text-xl lg:text-2xl" />
-        <p className="text-white bg-zinc-800 p-3 rounded-full text-base lg:text-[18px]">
+        <p className="text-white bg-zinc-800 p-4 rounded-full text-base lg:text-[18px]">
           {displayInput}
         </p>
       </div>
       <div className="res flex lg:mx-36 mx-4 lg:mt-10 mt-6 items-start gap-3 lg:gap-5 relative">
-        <div className="w-8 lg:w-9 h-8 lg:h-9 overflow-hidden flex-shrink-0">
+        <div className="w-8 lg:w-9 h-8 lg:h-9  overflow-hidden flex-shrink-0">
           <img
             src={gemini_icon}
             alt="gemini-icon"
             className={`${loading && "gemini-icon"} w-full h-full`}
           />
         </div>
-        <pre className="text-zinc-300 text-sm lg:text-lg whitespace-pre-wrap">
-          {geminiResponse}
-        </pre>
-      </div>
+        {!loading
+        &&
+        <div className="prose prose-invert text-zinc-400 max-w-[70vw] lg:w-[65vw] text-sm lg:text-lg whitespace-no-wrap" dangerouslySetInnerHTML={{ __html: htmlContent }} />
+        }
+        </div>
     </div>
   );
 };

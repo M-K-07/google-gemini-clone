@@ -19,7 +19,7 @@ const Sidebar = ({ istoggle }) => {
 
   return (
     <div
-      className={`h-full  lg:relative absolute overflow-hidden flex transition-all duration-200 z-10 ${!istoggle ? 'lg:w-[15%] md:w-[40%] w-[60%]':'lg:w-fit lg:p-5 w-0'} flex-col justify-between bg-[#1E1F20] ${!istoggle && 'p-5 lg:py-5 py-10'}`}
+      className={`h-full  lg:relative absolute overflow-hidden flex transition-all duration-200 z-10 ${!istoggle ? 'lg:w-[20%] md:w-[40%] w-[60%]':'lg:w-fit lg:p-5 w-0'} flex-col justify-between bg-[#1E1F20] ${!istoggle && 'p-5 lg:py-5 py-10'} `}
     >
       <div className="top">
         <div
@@ -39,11 +39,11 @@ const Sidebar = ({ istoggle }) => {
             <div
             key={index}
             onClick={() => displayRecent(chat)}
-            className="chat text-white flex items-center gap-4 w-3/4 cursor-pointer hover:bg-[#282A2C] rounded-full px-3 py-2"
+            className="chat text-white flex items-center gap-4 w-4/4 cursor-pointer hover:bg-[#282A2C] rounded-full px-3 py-2"
             >
               {!istoggle && <FaRegMessage />}
               {!istoggle && (
-                <p className="lg:text-sm w-full truncate">{chat.text.length>30 ? `${chat.text.slice(0,30)}...`: chat.text}</p>
+                <p className="lg:text-sm w-full truncate">{chat.text.length>30 ? `${chat.text.slice(0,40)}...`: chat.text}</p>
               ) }
             </div>
           ))}

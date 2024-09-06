@@ -31,7 +31,12 @@ textarea::-webkit-scrollbar {
   animation: fade 1s ease-in-out;
 }
 pre {
-  font-family: "Outfit", sans-serif;
+  overflow-x: auto;
+  border-radius: 10px;
+}
+
+pre [data-line] {
+  padding: 0 1rem;
 }
 
 .gemini-icon{
