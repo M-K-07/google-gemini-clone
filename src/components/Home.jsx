@@ -50,18 +50,19 @@ const Home = ({ istoggle, setIstoggle }) => {
       )}
 
       <div className="inp lg:mx-4 w-5/6 md:w-8/12 lg:w-fit overflow-hidden justify-center absolute lg:bottom-4 bottom-[9vh] left-1/2 -translate-x-1/2 flex items-center">
-        <input
+        <textarea
           type="text"
           onChange={(e) => setInput(e.target.value)}
           value={input}
-          className="bg-[#1E1F20] outline-none relative lg:h-[7vh] h-[40px] resize-none text-ellipsis overflow-hidden rounded-full lg:text-[15px] text-[12px] lg:w-[900px] w-[500px] py-3 px-5"
+          className="bg-[#1E1F20] outline-none relative lg:h-[7vh] h-[40px] resize-none text-ellipsis overflow-auto rounded-full lg:text-[15px] text-[12px] lg:w-[900px] w-[500px] py-3 px-5"
           placeholder="Enter a prompt here"
         />
-
+        {input.length>0 &&
         <IoSend
           onClick={gemini}
           className="text-white absolute right-5 flex items-center justify-center rounded-full lg:w-[40px] w-[30px] lg:text-[20px] text-[15px] cursor-pointer"
         />
+        }
       </div>
     </div>
   );
