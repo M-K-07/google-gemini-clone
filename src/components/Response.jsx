@@ -49,15 +49,11 @@ const Response = () => {
     }
   }, [result]);
 
-  useEffect(() => {
-    bottomRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [htmlContent]);
-
   return (
     <div className="display-res lg:max-h-[80vh] max-h-[77vh] overflow-y-scroll">
       <div className="user-inp flex lg:mx-36 mx-4 lg:mt-16 mt-8 items-start justify-start gap-3 lg:gap-5">
         <FaUserCircle className="w-8 h-8  text-3xl lg:text-2xl" />
-        <p className="text-white bg-zinc-800 p-4 lg:rounded-2xl rounded-2xl w-[400px] lg:w-fit md:w-fit text-[13px] whitespace-pre-wrap lg:text-[15px]">
+        <p className="text-white bg-zinc-800 p-4 lg:rounded-2xl rounded-2xl w-[400px] lg:w-fit md:w-fit text-[13px] whitespace-pre-wrap lg:text-[17px]">
           {displayInput}
         </p>
       </div>
@@ -72,13 +68,12 @@ const Response = () => {
         </div>
         {!loading && (
           <div
-            className="prose prose-invert text-zinc-400 max-w-[70vw] lg:w-[65vw] text-sm lg:text-lg whitespace-no-wrap"
+            className="prose prose-invert text-zinc-400 max-w-[70vw] lg:w-[65vw]  text-sm lg:text-lg whitespace-no-wrap"
             dangerouslySetInnerHTML={{ __html: htmlContent }}
           />
         )}
       </div>
       
-      <div ref={bottomRef} />
     </div>
   );
 };

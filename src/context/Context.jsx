@@ -23,16 +23,16 @@ const AIContextProvider = (props) => {
     setShowResult(true);
     setDisplayInput(input);
     const res = await run(input);
+    setInput("");
 
     let newResponse = res.split(" ");
-
+    
     for (let i = 0; i < newResponse.length; i++) {
       const next = newResponse[i];
       delayPara(i, next + " ");
     }
-
-    console.log(res);
-    setInput("");
+    
+    // console.log(res);
     setLoading(false);
     setRecentChats((prevChats) => [
       { text: input, response: res },

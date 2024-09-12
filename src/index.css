@@ -9,6 +9,7 @@
 body{
   margin: 0;
   padding: 0;
+  scroll-behavior: smooth;
 }
 .greetings h1:nth-child(1) {
   background: -webkit-linear-gradient(45deg, #4b90ff, #ff5546, #fff, #111);
