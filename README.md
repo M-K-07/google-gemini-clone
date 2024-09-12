@@ -4,4 +4,4 @@ A Google Gemini Clone project built using React, Gemini API, and Tailwind CSS. T
 
 ## Live Demo
 
-https://google-gemini-clone-07.netlify.app/
+https://gemini-clone-07.netlify.app/
