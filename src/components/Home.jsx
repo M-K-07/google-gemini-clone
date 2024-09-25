@@ -31,12 +31,12 @@ const Home = ({ istoggle, setIstoggle }) => {
     }, [input]);
 
   return (
-    <div className="bg-black w-full h-screen text-white px-5 pt-5 relative overflow-hidden">
+    <div className="bg-black w-full h-screen text-white px-5 pt-5 relative">
       <Navbar istoggle={istoggle} setIstoggle={setIstoggle} />
       {showResult ? (
         <Response />
       ) : (
-        <div className="body flex flex-col justify-around h-full w-fit m-auto ">
+        <div className="body flex flex-col justify-around h-full lg:w-fit m-auto ">
           <div
             className={`greetings pt-10 pl-5`} 
           >
