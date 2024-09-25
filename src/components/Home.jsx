@@ -36,13 +36,9 @@ const Home = ({ istoggle, setIstoggle }) => {
       {showResult ? (
         <Response />
       ) : (
-        <div className="body flex flex-col justify-around h-full ">
+        <div className="body flex flex-col justify-around h-full w-fit m-auto ">
           <div
-            className={`greetings pt-10 ${
-              !istoggle
-                ? "lg:pl-[200px] md:pl-[100px] pl-[10px]"
-                : "lg:pl-[260px] md:pl-[100px] pl-[10px]"
-            }`}
+            className={`greetings pt-10 pl-5`} 
           >
             <h1 className="greet-heading lg:text-5xl md:text-6xl text-[50px] font-semibold tracking-tighter">
               Hello, Broo !
@@ -61,7 +57,7 @@ const Home = ({ istoggle, setIstoggle }) => {
                 key={index}
                 className="card lg:w-[210px] w-full bg-[#1E1F20] p-4 rounded-xl lg:h-[30vh] md:h-[200px] hover:bg-[#282A2C] cursor-pointer relative"
               >
-                <p className=" lg:text-[1.1vw] md:text-[17px] text-[12px] w-[100px] lg:w-auto h-[100px] lg:h-auto">
+                <p className=" lg:text-[18.3px] md:text-[17px] text-[12px] w-[100px] lg:w-auto h-[100px] lg:h-auto">
                   {prompt}
                 </p>
                 {recommended.logos[index]}
