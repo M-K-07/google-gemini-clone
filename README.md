@@ -4,7 +4,7 @@ A Google Gemini Clone project built using **React**, **Gemini API**, and **Tailw
 
 ## Live Demo 🌐
 
-Check out the live demo here: [Live Demo](https://google-gemini-clone-07.netlify.app/)
+Check out the live demo here: [Live Demo](https://google-gemini-clone-7.netlify.app/)
 
 ## Features 🚀
 
