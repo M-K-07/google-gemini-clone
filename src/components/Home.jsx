@@ -31,7 +31,7 @@ const Home = ({ istoggle, setIstoggle }) => {
     }, [input]);
 
   return (
-    <div className="bg-black w-full h-screen text-white px-5 pt-5 relative">
+    <div className="bg-black w-full h-screen text-white px-5 pt-5 relative overflow-hidden">
       <Navbar istoggle={istoggle} setIstoggle={setIstoggle} />
       {showResult ? (
         <Response />
